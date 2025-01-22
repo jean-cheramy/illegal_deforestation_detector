@@ -10,7 +10,6 @@ def model_eval(model, test_dataloader):
 
     with torch.no_grad():
         for batch_features, batch_labels in test_dataloader:
-            batch_features = batch_features.view(batch_features.size(0), -1)
             outputs = model(batch_features)
             _, preds = torch.max(outputs, 1)
             all_preds.extend(preds.cpu().numpy())

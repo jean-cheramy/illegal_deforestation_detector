@@ -52,4 +52,5 @@ def train_LEAN(train_loader, test_loader, num_epochs):
         print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {avg_loss:.4f}")
 
     torch.save(model.state_dict(), "lightweight_audio_model.pth")
+#    model.load_state_dict(torch.load("lightweight_audio_model.pth"))
     model_eval(model, test_loader)

@@ -10,6 +10,9 @@ class AudioDataset(IterableDataset):
         self.max_length = max_length
         self.feature_length = feature_length
 
+    def __len__(self):
+        return len(self.dataset)
+
     def __iter__(self):
         for sample in self.dataset:
             audio = sample['audio']

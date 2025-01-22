@@ -10,8 +10,8 @@ from utils import collate_fn
 @track_emissions(log_level="critical")
 def main():
     dataset = load_dataset("rfcx/frugalai")
-    train_dataset = dataset["train"]
-    test_dataset = dataset["test"]
+    train_dataset = dataset["train"].select(range(1000))
+    test_dataset = dataset["test"].select(range(100))
 
     max_length = 16000
     feature_length = 50
