@@ -4,6 +4,22 @@ import torch
 from torch.utils.data import IterableDataset
 
 
+def prepare_data(dataloader):
+    print("preparing the data...")
+    all_data = []
+    all_labels = []
+    for batch_data, batch_labels in dataloader:
+        all_data.append(batch_data)
+        all_labels.append(batch_labels)
+
+    # Concatenate all batches into single tensors
+    concat_data = torch.cat(all_data, dim=0)
+    concat_labels = torch.cat(all_labels, dim=0)
+    concat_data = concat_data.view(concat_data.size(0), -1)
+    print(f"{len(concat_data)} records")
+    return concat_data.numpy(), concat_labels.numpy()
+
+
 class AudioDataset(IterableDataset):
     def __init__(self, dataset, max_length=16000, feature_length=50):
         self.dataset = dataset

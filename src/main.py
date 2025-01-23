@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader
 
 from architectures.LEAN import train_LEAN
 from architectures.RF import RandomForest
+from architectures.svm import SVM
 from data import AudioDataset
 from utils import collate_fn
 
@@ -25,9 +26,14 @@ def main():
     test_dataloader = DataLoader(test_audio_dataset, batch_size=batch_size, collate_fn=collate_fn, num_workers=1)
 
     #train_LEAN(train_dataloader, test_dataloader, num_epochs)
-    rf = RandomForest()
-    rf.train(train_dataloader)
-    rf.eval_model(test_dataloader)
+
+    # rf = RandomForest()
+    # rf.train(train_dataloader)
+    # rf.eval_model(test_dataloader)
+
+    svm = SVM()
+    svm.train(train_dataloader)
+    svm.eval(test_dataloader)
 
 
 if __name__ == "__main__":
