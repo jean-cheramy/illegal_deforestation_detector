@@ -27,10 +27,10 @@ class AudioDataset(IterableDataset):
                 y = np.pad(y, (0, self.max_length - len(y)), 'constant')
 
             # Extract MFCC features
-            mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+            mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=8)
 
             # Extract log-mel spectrogram
-            mel_spec = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
+            mel_spec = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=40)
             log_mel_spec = librosa.power_to_db(mel_spec)
 
             # Combine features

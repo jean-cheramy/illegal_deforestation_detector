@@ -11,10 +11,10 @@ class LightweightAudioNet(nn.Module):
     def __init__(self):
         super(LightweightAudioNet, self).__init__()
 
-        self.conv1 = nn.Conv1d(141, 16, kernel_size=3, stride=1, padding=1)
-        self.conv2 = nn.Conv1d(16, 32, kernel_size=3, stride=1, padding=1)
+        self.conv1 = nn.Conv1d(48, 16, kernel_size=3, stride=1, padding=1)
+        self.conv2 = nn.Conv1d(16, 8, kernel_size=3, stride=1, padding=1)
         self.pool = nn.AdaptiveAvgPool1d(1)
-        self.fc = nn.Linear(32, 2)
+        self.fc = nn.Linear(8, 2)
 
     def forward(self, x):
         x = torch.relu(self.conv1(x))
