@@ -1,30 +1,13 @@
 import librosa
 import numpy as np
-import torch
-from torch.utils.data import IterableDataset
 
-
-def prepare_data(dataloader):
-    print("preparing the data...")
-    all_data = []
-    all_labels = []
-    for batch_data, batch_labels in dataloader:
-        all_data.append(batch_data)
-        all_labels.append(batch_labels)
-
-    # Concatenate all batches into single tensors
-    concat_data = torch.cat(all_data, dim=0)
-    concat_labels = torch.cat(all_labels, dim=0)
-    concat_data = concat_data.view(concat_data.size(0), -1)
-    print(f"{len(concat_data)} records")
-    return concat_data.numpy(), concat_labels.numpy()
 
 def extract_chainsaw_features(
-    arr,
-    sr=12000,
-    n_mfcc=20,
-    f_ref_low=(100, 250),   # typical idle pitch band for chainsaw
-    f_ref_high=(2000, 4000) # typical higher freq engine noise band
+        arr,
+        sr=12000,
+        n_mfcc=20,
+        f_ref_low=(100, 250),  # typical idle pitch band for chainsaw
+        f_ref_high=(2000, 4000)  # typical higher freq engine noise band
 ):
     """
     Extract ~100D feature vector specialized for chainsaw detection.
@@ -54,10 +37,10 @@ def extract_chainsaw_features(
 
     # 2. Pitch estimation: using librosa's YIN
     #    -> we get an f0 contour over time
-    fmin = 50    # Hz, below typical chainsaw fundamentals
-    fmax = 600   # Hz, above typical rev idle
+    fmin = 50  # Hz, below typical chainsaw fundamentals
+    fmax = 600  # Hz, above typical rev idle
     f0_series = librosa.yin(y=arr, sr=sr, fmin=fmin, fmax=fmax, frame_length=n_fft, hop_length=hop_length)
-    
+
     # If YIN fails to find a pitch, it may produce NaNs; replace them:
     f0_series = np.nan_to_num(f0_series, nan=0.0)
 
@@ -73,12 +56,12 @@ def extract_chainsaw_features(
     # Compute the STFT once for efficiency:
     stft_data = librosa.stft(arr, n_fft=n_fft, hop_length=hop_length)
     S = np.abs(stft_data)  # magnitude spectrogram
-    
+
     # Standard spectral features from librosa
     spec_centroid = librosa.feature.spectral_centroid(S=S, sr=sr)
     spec_bandwidth = librosa.feature.spectral_bandwidth(S=S, sr=sr)
     spec_rolloff = librosa.feature.spectral_rolloff(S=S, sr=sr)
-    spec_flux = librosa.onset.onset_strength(S=librosa.power_to_db(S**2, ref=np.max), sr=sr, hop_length=hop_length)
+    spec_flux = librosa.onset.onset_strength(S=librosa.power_to_db(S ** 2, ref=np.max), sr=sr, hop_length=hop_length)
 
     # 2D shape for consistent stats
     spec_flux = np.expand_dims(spec_flux, axis=0)
@@ -86,20 +69,20 @@ def extract_chainsaw_features(
     # Summarize each feature with mean & std across time
     def feature_mean_std(feat):
         return np.array([np.mean(feat), np.std(feat)])
-    
+
     centroid_stats = feature_mean_std(spec_centroid)
     bandwidth_stats = feature_mean_std(spec_bandwidth)
-    rolloff_stats   = feature_mean_std(spec_rolloff)
-    flux_stats      = feature_mean_std(spec_flux)
+    rolloff_stats = feature_mean_std(spec_rolloff)
+    flux_stats = feature_mean_std(spec_flux)
 
     # Zero-crossing rate (time-domain)
     zcr = librosa.feature.zero_crossing_rate(y=arr, frame_length=n_fft, hop_length=hop_length)
     zcr_stats = feature_mean_std(zcr)
 
     # Short-time energy
-    frame_energy = np.sum(S**2, axis=0)
+    frame_energy = np.sum(S ** 2, axis=0)
     energy_mean = np.mean(frame_energy)
-    energy_std  = np.std(frame_energy)
+    energy_std = np.std(frame_energy)
 
     # 4. Energy ratio in specific frequency bands:
     freqs = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
@@ -108,25 +91,25 @@ def extract_chainsaw_features(
     idx_high = np.where((freqs >= f_ref_high[0]) & (freqs <= f_ref_high[1]))[0]
 
     # Integrate magnitude-squared in each band across time, then ratio
-    band_energy_low  = np.sum(S[idx_low, :]**2)
-    band_energy_high = np.sum(S[idx_high, :]**2)
-    total_energy     = np.sum(S**2)
-    ratio_low  = band_energy_low  / (total_energy + 1e-9)
+    band_energy_low = np.sum(S[idx_low, :] ** 2)
+    band_energy_high = np.sum(S[idx_high, :] ** 2)
+    total_energy = np.sum(S ** 2)
+    ratio_low = band_energy_low / (total_energy + 1e-9)
     ratio_high = band_energy_high / (total_energy + 1e-9)
 
     # MFCCs: including delta and possibly delta-delta
     mfcc = librosa.feature.mfcc(y=arr, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length)
     mfcc_delta = librosa.feature.delta(mfcc)
     mfcc_delta2 = librosa.feature.delta(mfcc, order=2)
-    
+
     # We'll take the mean across time for each coefficient, for each set:
     mfcc_mean = np.mean(mfcc, axis=1)
-    mfcc_std  = np.std(mfcc, axis=1)
+    mfcc_std = np.std(mfcc, axis=1)
     mfcc_delta_mean = np.mean(mfcc_delta, axis=1)
-    mfcc_delta_std  = np.std(mfcc_delta, axis=1)
+    mfcc_delta_std = np.std(mfcc_delta, axis=1)
     mfcc_delta2_mean = np.mean(mfcc_delta2, axis=1)
-    mfcc_delta2_std  = np.std(mfcc_delta2, axis=1)
-    
+    mfcc_delta2_std = np.std(mfcc_delta2, axis=1)
+
     # Combine them (this yields 6*n_mfcc features):
     mfcc_features = np.concatenate([
         mfcc_mean, mfcc_std,
@@ -140,11 +123,11 @@ def extract_chainsaw_features(
         # We define a small helper that sums energy near a given freq ± some tolerance
         def harmonic_energy(mag_spectrogram, base_freq, sr, freq_tolerance=20.0):
             freqs_local = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
-            idx = np.where((freqs_local >= base_freq - freq_tolerance) & 
+            idx = np.where((freqs_local >= base_freq - freq_tolerance) &
                            (freqs_local <= base_freq + freq_tolerance))[0]
             if len(idx) == 0:
                 return 0.0
-            return np.sum(mag_spectrogram[idx, :]**2)
+            return np.sum(mag_spectrogram[idx, :] ** 2)
 
         # Fundamental
         energy_fund = harmonic_energy(S, pitch_mean, sr)
@@ -159,14 +142,14 @@ def extract_chainsaw_features(
         harmonic_ratios = [0.0, 0.0, 0.0, 0.0]
 
     harmonic_ratios = np.array(harmonic_ratios)
-    
+
     # 7. Concatenate all features into a single ~100D vector
-    
+
     # Pitch stats
     pitch_features = np.array([
         pitch_mean, pitch_std, pitch_min, pitch_max, pitch_range, pitch_unvoiced_count
     ])
-    
+
     # Basic spectral shape stats (each has 2 => mean/std)
     spectral_shape_features = np.concatenate([
         centroid_stats,
@@ -181,59 +164,11 @@ def extract_chainsaw_features(
 
     # Concatenate all              # nb_of_features
     features = np.concatenate([
-        pitch_features,            # 6
-        spectral_shape_features,   # 10
-        energy_features,           # 4
-        mfcc_features,             # 6*n_mfcc
-        harmonic_ratios            # 4
+        pitch_features,  # 6
+        spectral_shape_features,  # 10
+        energy_features,  # 4
+        mfcc_features,  # 6*n_mfcc
+        harmonic_ratios  # 4
     ])
 
     return features
-
-
-class AudioDataset(IterableDataset):
-    def __init__(self, dataset, max_length=16000, feature_length=50):
-        self.dataset = dataset
-        self.max_length = max_length
-        self.feature_length = feature_length
-
-    def __len__(self):
-        return len(self.dataset)
-
-    def __iter__(self):
-        for sample in self.dataset:
-            audio = sample['audio']
-            y = audio['array']
-            sr = audio['sampling_rate']
-            label = sample['label']
-
-            # Pad or truncate audio to max_length
-            if len(y) > self.max_length:
-                y = y[:self.max_length]
-            else:
-                y = np.pad(y, (0, self.max_length - len(y)), 'constant')
-
-            # Extract MFCC features
-            mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=8)
-
-            # Extract log-mel spectrogram
-            mel_spec = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=40)
-            log_mel_spec = librosa.power_to_db(mel_spec)
-
-            # Combine features
-            features = np.concatenate([mfcc, log_mel_spec], axis=0)
-
-            try:
-                # Other features
-                #features_2 = extract_chainsaw_features(y, sr=sr)
-
-                # Pad or truncate features to fixed length
-                if features.shape[1] > self.feature_length:
-                    features = features[:, :self.feature_length]
-                else:
-                    features = np.pad(features, ((0, 0), (0, self.feature_length - features.shape[1])), 'constant')
-
-                # Yield features and label
-                yield torch.tensor(features, dtype=torch.float32), torch.tensor(label, dtype=torch.long)
-            except:
-                print("One sample was wrongly processed")
