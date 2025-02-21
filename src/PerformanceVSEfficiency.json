@@ -1,0 +1,506 @@
+{
+    "linear_regression": {
+        "emission": {
+            "run_id": "e622fa16-e5cf-4647-9b3f-e19cb3d74934",
+            "duration": 10209.236793429998,
+            "emissions": 0.007523713155020691,
+            "emissions_rate": 7.369468840342126e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.021269378365393762,
+            "gpu_energy": 0,
+            "ram_energy": 0.03320804243891515,
+            "energy_consumed": 0.05447742080430891,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 54.47742080430891,
+        "emissions_gco2eq": 7.523713155020691,
+        "metrics": {
+            "accuracy": 0.8486111111111111,
+            "report": {
+                "0": {
+                    "precision": 0.8953116173978535,
+                    "recall": 0.7328914919852034,
+                    "f1-score": 0.806000508517671,
+                    "support": 6488.0
+                },
+                "1": {
+                    "precision": 0.8233255173819961,
+                    "recall": 0.9355885078776645,
+                    "f1-score": 0.8758744102814381,
+                    "support": 8632.0
+                },
+                "accuracy": 0.8486111111111111,
+                "macro avg": {
+                    "precision": 0.8593185673899248,
+                    "recall": 0.8342399999314339,
+                    "f1-score": 0.8409374593995546,
+                    "support": 15120.0
+                },
+                "weighted avg": {
+                    "precision": 0.8542147909866841,
+                    "recall": 0.8486111111111111,
+                    "f1-score": 0.8458914820642873,
+                    "support": 15120.0
+                }
+            }
+        }
+    },
+    "lean": {
+        "emission": {
+            "run_id": "e622fa16-e5cf-4647-9b3f-e19cb3d74934",
+            "duration": 5525.117157481989,
+            "emissions": 0.0040717175616555605,
+            "emissions_rate": 7.369468693865973e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.011510659846641708,
+            "gpu_energy": 0,
+            "ram_energy": 0.017971680379817195,
+            "energy_consumed": 0.029482340226458903,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 29.482340226458902,
+        "emissions_gco2eq": 4.071717561655561,
+        "metrics": {
+            "accuracy": 0.8672619047619048,
+            "report": {
+                "0": {
+                    "precision": 0.9143702607730719,
+                    "recall": 0.7620221948212084,
+                    "f1-score": 0.8312736443883985,
+                    "support": 6488.0
+                },
+                "1": {
+                    "precision": 0.8410377844126429,
+                    "recall": 0.9463623725671918,
+                    "f1-score": 0.890596892886345,
+                    "support": 8632.0
+                },
+                "accuracy": 0.8672619047619048,
+                "macro avg": {
+                    "precision": 0.8777040225928574,
+                    "recall": 0.8541922836942001,
+                    "f1-score": 0.8609352686373717,
+                    "support": 15120.0
+                },
+                "weighted avg": {
+                    "precision": 0.8725047888191549,
+                    "recall": 0.8672619047619048,
+                    "f1-score": 0.8651412555679139,
+                    "support": 15120.0
+                }
+            }
+        }
+    },
+    "random_forest": {
+        "emission": {
+            "run_id": "e622fa16-e5cf-4647-9b3f-e19cb3d74934",
+            "duration": 392.80960021101055,
+            "emissions": 0.00028942598224992663,
+            "emissions_rate": 7.369462177774009e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.0008182016781041954,
+            "gpu_energy": 0,
+            "ram_energy": 0.001277463148804843,
+            "energy_consumed": 0.0020956648269090383,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 2.0956648269090383,
+        "emissions_gco2eq": 0.28942598224992666,
+        "metrics": {
+            "accuracy": 0.858994708994709,
+            "report": {
+                "0": {
+                    "precision": 0.8436415272956769,
+                    "recall": 0.8241368680641183,
+                    "f1-score": 0.833775144238266,
+                    "support": 6488.0
+                },
+                "1": {
+                    "precision": 0.8700751537235254,
+                    "recall": 0.885194624652456,
+                    "f1-score": 0.87756977144826,
+                    "support": 8632.0
+                },
+                "accuracy": 0.858994708994709,
+                "macro avg": {
+                    "precision": 0.8568583405096011,
+                    "recall": 0.8546657463582872,
+                    "f1-score": 0.8556724578432631,
+                    "support": 15120.0
+                },
+                "weighted avg": {
+                    "precision": 0.8587324706372899,
+                    "recall": 0.858994708994709,
+                    "f1-score": 0.8587774737406911,
+                    "support": 15120.0
+                }
+            }
+        }
+    },
+        "svm": {
+        "emission": {
+            "run_id": "1f898d87-b31e-45ae-b63b-a051f5680c20",
+            "duration": 23632.880533477,
+            "emissions": 0.017416139368378807,
+            "emissions_rate": 7.369469095534251e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.04923505753475001,
+            "gpu_energy": 0,
+            "ram_energy": 0.07687107298997942,
+            "energy_consumed": 0.1261061305247294,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 126.10613052472941,
+        "emissions_gco2eq": 17.416139368378808,
+        "metrics": {
+            "accuracy": 0.8671957671957672,
+            "report": {
+                "0": {
+                    "precision": 0.8844833504977686,
+                    "recall": 0.7942355117139334,
+                    "f1-score": 0.8369335715445834,
+                    "support": 6488.0
+                },
+                "1": {
+                    "precision": 0.856358941252421,
+                    "recall": 0.9220342910101946,
+                    "f1-score": 0.8879839339506862,
+                    "support": 8632.0
+                },
+                "accuracy": 0.8671957671957672,
+                "macro avg": {
+                    "precision": 0.8704211458750948,
+                    "recall": 0.858134901362064,
+                    "f1-score": 0.8624587527476348,
+                    "support": 15120.0
+                },
+                "weighted avg": {
+                    "precision": 0.8684271401402394,
+                    "recall": 0.8671957671957672,
+                    "f1-score": 0.8660781964314538,
+                    "support": 15120.0
+                }
+            }
+        }
+    },
+    "linear_regression_chainsaw": {
+        "emission": {
+            "run_id": "1f898d87-b31e-45ae-b63b-a051f5680c20",
+            "duration": 839.8597300319816,
+            "emissions": 0.0006189309825335582,
+            "emissions_rate": 7.369465690782325e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.0017497053775187565,
+            "gpu_energy": 0,
+            "ram_energy": 0.0027318269310069587,
+            "energy_consumed": 0.004481532308525715,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 4.481532308525715,
+        "emissions_gco2eq": 0.6189309825335582,
+        "metrics": {
+            "accuracy": 0.8621419593834756,
+            "report": {
+                "0": {
+                    "precision": 0.8884771484030352,
+                    "recall": 0.7761677200554956,
+                    "f1-score": 0.8285338160276452,
+                    "support": 6487.0
+                },
+                "1": {
+                    "precision": 0.8463492063492063,
+                    "recall": 0.9267670915411356,
+                    "f1-score": 0.8847345132743363,
+                    "support": 8630.0
+                },
+                "accuracy": 0.8621419593834756,
+                "macro avg": {
+                    "precision": 0.8674131773761207,
+                    "recall": 0.8514674057983156,
+                    "f1-score": 0.8566341646509907,
+                    "support": 15117.0
+                },
+                "weighted avg": {
+                    "precision": 0.8644271292243263,
+                    "recall": 0.8621419593834756,
+                    "f1-score": 0.8606176962445496,
+                    "support": 15117.0
+                }
+            }
+        }
+    },
+    "lean_chainsaw": {
+        "emission": {
+            "run_id": "1f898d87-b31e-45ae-b63b-a051f5680c20",
+            "duration": 6994.8660811389855,
+            "emissions": 0.005154844894287951,
+            "emissions_rate": 7.369468839310519e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.014572637798599977,
+            "gpu_energy": 0,
+            "ram_energy": 0.022752370305898315,
+            "energy_consumed": 0.03732500810449832,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 37.325008104498316,
+        "emissions_gco2eq": 5.154844894287951,
+        "metrics": {
+            "accuracy": 0.9139379506515843,
+            "report": {
+                "0": {
+                    "precision": 0.9147472808701216,
+                    "recall": 0.8816093725913365,
+                    "f1-score": 0.8978726744642437,
+                    "support": 6487.0
+                },
+                "1": {
+                    "precision": 0.9133671742808799,
+                    "recall": 0.9382387022016222,
+                    "f1-score": 0.9256358959702772,
+                    "support": 8630.0
+                },
+                "accuracy": 0.9139379506515843,
+                "macro avg": {
+                    "precision": 0.9140572275755008,
+                    "recall": 0.9099240373964794,
+                    "f1-score": 0.9117542852172604,
+                    "support": 15117.0
+                },
+                "weighted avg": {
+                    "precision": 0.9139594049777384,
+                    "recall": 0.9139379506515843,
+                    "f1-score": 0.9137221552869644,
+                    "support": 15117.0
+                }
+            }
+        }
+    },
+    "random_forest_chainsaw": {
+        "emission": {
+            "run_id": "1f898d87-b31e-45ae-b63b-a051f5680c20",
+            "duration": 871.7158995079808,
+            "emissions": 0.0006424077281675135,
+            "emissions_rate": 7.369465704505714e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.0018160736537249922,
+            "gpu_energy": 0,
+            "ram_energy": 0.0028354481964890516,
+            "energy_consumed": 0.004651521850214058,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 4.651521850214058,
+        "emissions_gco2eq": 0.6424077281675135,
+        "metrics": {
+            "accuracy": 0.8746444400343983,
+            "report": {
+                "0": {
+                    "precision": 0.8902107409925221,
+                    "recall": 0.8074610759981502,
+                    "f1-score": 0.8468191738743837,
+                    "support": 6487.0
+                },
+                "1": {
+                    "precision": 0.8647243582800823,
+                    "recall": 0.9251448435689456,
+                    "f1-score": 0.8939147959469294,
+                    "support": 8630.0
+                },
+                "accuracy": 0.8746444400343983,
+                "macro avg": {
+                    "precision": 0.8774675496363022,
+                    "recall": 0.8663029597835479,
+                    "f1-score": 0.8703669849106566,
+                    "support": 15117.0
+                },
+                "weighted avg": {
+                    "precision": 0.8756610629606139,
+                    "recall": 0.8746444400343983,
+                    "f1-score": 0.8737051445356305,
+                    "support": 15117.0
+                }
+            }
+        }
+    },
+    "svm_chainsaw": {
+        "emission": {
+            "run_id": "1f898d87-b31e-45ae-b63b-a051f5680c20",
+            "duration": 1718.3330601899943,
+            "emissions": 0.0012663197145808373,
+            "emissions_rate": 7.369467613349338e-07,
+            "cpu_power": 7.5,
+            "gpu_power": 0.0,
+            "ram_power": 11.709807872772217,
+            "cpu_energy": 0.0035798595489749813,
+            "gpu_energy": 0,
+            "ram_energy": 0.005589260876353502,
+            "energy_consumed": 0.00916912042532847,
+            "country_name": "Belgium",
+            "country_iso_code": "BEL",
+            "region": "wallonia",
+            "cloud_provider": "",
+            "cloud_region": "",
+            "os": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+            "python_version": "3.12.3",
+            "codecarbon_version": "2.8.3",
+            "cpu_count": 8,
+            "cpu_model": "Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz",
+            "gpu_count": null,
+            "gpu_model": null,
+            "ram_total_size": 31.226154327392578,
+            "tracking_mode": "machine",
+            "on_cloud": "N",
+            "pue": 1.0
+        },
+        "energy_consumed_wh": 9.169120425328469,
+        "emissions_gco2eq": 1.2663197145808374,
+        "metrics": {
+            "accuracy": 0.7932790897664881,
+            "report": {
+                "0": {
+                    "precision": 0.7866643929058663,
+                    "recall": 0.7111145367658394,
+                    "f1-score": 0.7469840498745041,
+                    "support": 6487.0
+                },
+                "1": {
+                    "precision": 0.797471090457149,
+                    "recall": 0.8550405561993047,
+                    "f1-score": 0.8252530336073366,
+                    "support": 8630.0
+                },
+                "accuracy": 0.7932790897664881,
+                "macro avg": {
+                    "precision": 0.7920677416815076,
+                    "recall": 0.7830775464825721,
+                    "f1-score": 0.7861185417409203,
+                    "support": 15117.0
+                },
+                "weighted avg": {
+                    "precision": 0.792833725436631,
+                    "recall": 0.7932790897664881,
+                    "f1-score": 0.7916662837578371,
+                    "support": 15117.0
+                }
+            }
+        }
+    }
+}

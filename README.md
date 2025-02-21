@@ -55,6 +55,10 @@ from datasets import load_dataset
 dataset = load_dataset("rfcx/frugalai", streaming=True)
 print(next(iter(dataset['train'])))
 ```
+## Usage 
+The process can be triggered with this command line:
+
+`python3 main.py`
 
 ## Methodology
 
@@ -72,7 +76,7 @@ print(next(iter(dataset['train'])))
 - Works well with structured feature extraction techniques (e.g., spectral features).
 #### Support Vector Machine (SVM)
 
-- Effective for classification tasks if the goal is to distinguish chainsaw sounds from other noises.
+- Effective for classification tasks.
 - Handles high-dimensional feature spaces well, making it suitable for frequency-domain audio data.
 - Works best with well-separated classes but may require careful tuning of kernel functions.
 #### Convolutional Neural Network (CNN)
@@ -97,22 +101,25 @@ We will compare performance and carbon emission for both approaches, the exhaust
 
 ### Results & Performance
 
- | Model                      | Accuracy | Carbon footprint |    |
-|----------------------------|----------|------------------|-------|
-| Linear regression          | Title    | Title            | Title |
-| Random Forest              | Text     | Title            | Title |
-| SVM                        | Title    | Title            | Title |
-| CNN                        | Text     | Title            | Title |
-| Linear regression chainsaw | Title    | Title            | Title |
-| Random Forest chainsaw     | Text     | Title            | Title |
-| Linear regression chainsaw | Title    | Title            | Title |
-| Random Forest chainsaw             | Text     | Title            | Title |
+ | Model                      | Accuracy | Energy consumed (wh) | 
+|----------------------------|----------|----------------------|
+| CNN chainsaw               | 0.913    | 37.32                |
+| Random Forest chainsaw     | 0.874    | 4.65                 |
+| CNN                        | 0.867    | 29.48                |
+| Linear regression chainsaw | 0.862    | 4.48                 |
+| Random Forest              | 0.858    | 2                    |
+| Linear regression          | 0.848    | 54.47                |
+| SVM                        | 0.867    | 126                  |
+| SVM chainsaw               | 0.793    | 9.16                 |
 
 
-## Usage 
-The process can be triggered with this command line:
+As we can see reducing the number of dimensions has been a great benefit for the CNN 
+architecture, it seems to be a reasonable compromise between accuracy and efficiency.
+A good next step would be to focus on the optimization of more efficient models
+like Random Forest or linear regression to find a better compromise. 
 
-`python3 main.py`
+Linear regression seems to be a particular good candidate for further improvements as
+it is simple and interpretable. Random forest predictions are by nature tricky to explain.
 
 ## Team
 [Vanessa Rivera-Quinones](https://github.com/vriveraq)  

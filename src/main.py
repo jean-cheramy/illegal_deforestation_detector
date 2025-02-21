@@ -83,10 +83,10 @@ def main():
     """
     results_dict = {}
     dataset = load_dataset("rfcx/frugalai")
-    train_dataset = dataset["train"].select(range(1000))
-    test_dataset = dataset["test"].select(range(200))
+    train_dataset = dataset["train"]
+    test_dataset = dataset["test"]
     batch_size = 128
-    epochs = 1
+    epochs = 100
 
     # Model training without chainsaw feature reduction
     train_audio_dataset = AudioDataset(train_dataset)
